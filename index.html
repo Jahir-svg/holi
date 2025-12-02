@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Cumpleaños</title>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        margin: 0;
+        padding: 0;
+        color: #4a4a4a;
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 60px auto;
+        background: rgba(255, 255, 255, 0.88);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        animation: fadeIn 1.2s ease-in-out;
+        position: relative;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+        text-align: center;
+        color: #c9366f;
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #a82656;
+        font-weight: 500;
+        margin-bottom: 30px;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.6;
+        margin-bottom: 17px;
+    }
+
+    .btn {
+        display: block;
+        margin: 25px auto 0;
+        padding: 14px 28px;
+        font-size: 18px;
+        color: white;
+        background: #c9366f;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+        background: #e84884;
+        transform: scale(1.05);
+    }
+
+    .mensaje-secreto {
+        display: none;
+        margin-top: 25px;
+        padding: 20px;
+        border-radius: 15px;
+        background: rgba(255, 240, 245, 0.95);
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        animation: aparecer 0.6s ease-in-out;
+    }
+
+    @keyframes aparecer {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    /* corazones gigantes */
+    .floating-heart {
+        position: fixed;
+        color: #ff2f71;
+        opacity: 0.9;
+        pointer-events: none;
+        animation: floatUp 4s ease-out forwards;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-200px) scale(2.5); opacity: 0; }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎉 ¡Feliz Cumpleaños! 🎉</h1>
+    <h2>Hoy es un día especial solo por ti</h2>
+
+    <p>
+        Hoy celebramos mucho más que un cumpleaños. Celebramos tu forma de ser, 
+        tu energía, tu manera de iluminar los días de las personas a tu alrededor.
+    </p>
+
+    <p>
+        Que este nuevo año te traiga más sonrisas que preocupaciones, más aventuras 
+        que rutinas, y más motivos para sentirte orgullosa de ti misma.
+    </p>
+
+    <p>
+        Eres una persona increíble, y aunque a veces no lo notes, tu luz hace 
+        del mundo un lugar mucho más bonito.
+    </p>
+
+    <p>
+        Guarda esto como un recordatorio de que vales muchísimo, y que este año 
+        solo traerá cosas lindas para ti.
+    </p>
+
+    <button class="btn" onclick="mostrarMensaje()">Toca aquí para tu mensaje especial 💝</button>
+
+    <div class="mensaje-secreto" id="secreto">
+        <h2>💞 Mensaje para ti 💞</h2>
+        <p>
+            Nunca olvides lo fuerte que eres, lo especial que eres, lo mucho que 
+            inspiras y lo increíble que es tu presencia en la vida de quienes te quieren.
+        </p>
+        <p>
+            Que hoy sonrías tanto que te duela la cara.  
+            Que hoy el mundo te abrace un poquito más fuerte.  
+            Y que todo lo bueno que das te regrese multiplicado.
+        </p>
+        <p>
+            Feliz cumpleaños, preciosa. 💖✨  
+            Este es tu año… y va a ser mágico.
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+function mostrarMensaje() {
+    document.getElementById("secreto").style.display = "block";
+    lanzarCorazones();
+}
+
+function lanzarCorazones() {
+    for (let i = 0; i < 45; i++) { // MUCHOS MÁS corazones
+        setTimeout(() => {
+            crearCorazon();
+        }, i * 70);
+    }
+}
+
+function crearCorazon() {
+    const heart = document.createElement("div");
+    heart.classList.add("floating-heart");
+    heart.textContent = "❤️";
+
+    // posición en toda la pantalla
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = Math.random() * window.innerHeight + "px";
+
+    // tamaño gigante variable
+    const size = 40 + Math.random() * 60;
+    heart.style.fontSize = size + "px";
+
+    // duración random
+    const duration = 3 + Math.random() * 3;
+    heart.style.animationDuration = duration + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
+}
+
+</script>
+
+</body>
+</html>
